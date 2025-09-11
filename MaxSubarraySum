@@ -1,0 +1,51 @@
+package niet.com;
+import java.util.*;
+class MaxSubarraySum {
+public static void main(String a[])
+{
+	Scanner sc= new Scanner(System.in);
+  System.out.println("Enter size of an array");
+	int n=sc.nextInt();
+	int c=1,sum=0,p=0;
+	int arr []= new int [n];
+	int m = (n*(n+1))/2;
+	int arrm[]=new int[m];
+  System.out.println("Enter Element of an array");
+	for(int i=0;i<n;i++)
+	{
+		arr[i]=sc.nextInt();
+	}
+  System.out.println("ARRAY");
+	for(int i=0;i<n;i++)
+	{
+		System.out.print(arr[i]);
+	}
+	System.out.println();
+	while(c<=n)
+	{
+		for(int i=0;i<=n-c;i++)
+		{
+			for(int j=i;j<i+c;j++)
+			{
+				sum=arr[j]+sum;
+			}
+			arrm[p]=sum;
+			p++;
+			sum=0;
+		}
+		c++;
+	}
+	for(int i=0;i<m;i++)
+	{
+		System.out.print(arrm[i]+" ");
+	}
+	System.out.println();
+	int max=0;
+	for(int i=0;i<m;i++)
+	{
+		if(arrm[max]<arrm[i])
+			max=i;
+	}
+	System.out.print("Maximum Subarray Sum ="+arrm[max]);
+}
+}
